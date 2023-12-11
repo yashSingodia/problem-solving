@@ -12,7 +12,7 @@ class DisjointSet {
     DisjointSet(int capacity) {
         capacity = capacity;
         parentOfNode = vector<int>(capacity, -1);
-        rankOfNode = vector<int>(capacity, -1);
+        rankOfNode = vector<int>(capacity, 0);
     }
 
     int findByCompression(int element) {
