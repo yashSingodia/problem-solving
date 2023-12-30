@@ -91,8 +91,7 @@ class Database {
                 insideTransaction = false;
                 retryWal(numTransactions);
             }
-            wal = {};
-            // insideTransaction = false;
+            
         }
 
         void rollbackTransaction(int numTransactions = 0) {
@@ -103,10 +102,9 @@ class Database {
             }
             else {
                 insideTransaction = false;
+                cache = {};
                 retryWal(wal.size() - numTransactions);
             }
-            wal = {};
-            // insideTransaction = false;
         }
 
         void retryWal(int retries) {
