@@ -17,6 +17,9 @@ class DisjointSet {
         }
 
         string findByPathCompression(string ele) {
+            
+            initializeParent(ele);
+            
             if(parent[ele] == ele) {
                 return ele;
             }
@@ -42,7 +45,7 @@ class DisjointSet {
         }
 };
 
-unordered_set<string> reducedQueries(vector<vector<string>> synonyms, vector<string> queries, DisjointSet* ds) {
+unordered_set<string> reducedQueries(vector<string> queries, DisjointSet* ds) {
     vector<string> result;
     unordered_set<string> uniqueStrings;
     string curResult = "";
@@ -88,6 +91,7 @@ int main() {
     vector<vector<string>> synonyms;
     synonyms.push_back({"get", "bring"});
     synonyms.push_back({"water", "liquid"});
+    synonyms.push_back({"a", "b"});
 
 
     DisjointSet* ds = new DisjointSet();
@@ -105,6 +109,7 @@ int main() {
     vector<string> queries;
     queries.push_back("get water");
     queries.push_back("bring water");
+    queries.push_back("a b");
 
     unordered_set<string> redQueries = reducedQueries(synonyms, queries, ds);
     for(auto s : redQueries) cout << s << endl;
