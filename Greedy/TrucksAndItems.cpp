@@ -23,7 +23,7 @@ vector<int> findAns(vector<int> trucks, vector<int> items) {
         set<int> tempSet = mp[ub];
         int idx = *(tempSet.begin());
         
-        // remove comment if the trucks have to be removed once the item is loaded in the truck
+        // uncomment if the trucks have to be removed once the item is loaded in the truck
 
         // tempSet.erase(idx);
         // mp[ub] = tempSet;
