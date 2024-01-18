@@ -3,6 +3,8 @@
 using namespace std;
 
 // Resource - https://www.youtube.com/watch?v=8B-LfpLxh2U
+// https://www.youtube.com/watch?v=7Sm0o5lMmfY
+// Ques -  https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-ii/description/
 
 void fillLps(string text, vector<int> &lpsCache) {
     int i = 1, len = 0;
