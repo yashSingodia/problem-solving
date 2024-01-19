@@ -7,7 +7,6 @@ class Converter{
         virtual float findConversion(string source, string target) = 0;
 };
 
-
 class CurrenyConverter : public Converter {
     private:
         void traversal(unordered_set<string>& visitedCurrencies, string source, string target, vector<float> &maxConversion, float prod) {
@@ -35,29 +34,30 @@ class CurrenyConverter : public Converter {
         }
 
         float findConversion(string source, string target) {
+            
             if(graph.find(source) == graph.end() || graph.find(target) == graph.end()) {
                 cout << "Not Possible " << endl; 
                 return -1;
             }
+
             unordered_set<string> visitedCurrencies;
+            visitedCurrencies.insert(source);
+            
             vector<float> maxConversion; 
 
+            // traverse the neighbours
             traversal(visitedCurrencies, source, target, maxConversion, 1);
 
             return *max_element(maxConversion.begin(), maxConversion.end());
 
         }
 
-        
-
         void createGraph(vector<vector<string>> currencies) {
             for(auto row : currencies) {
-
                 graph[row[0]].push_back({row[1], (float)stoi(row[2])});
                 graph[row[1]].push_back({row[0], 1/(float)stoi(row[3])});
             }
         }
-        
 };
 
 
